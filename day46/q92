@@ -1,0 +1,35 @@
+//Q92: Find the first repeating lowercase alphabet in a string.
+
+#include <stdio.h>
+
+int main()
+{
+    char str[100];
+    int count[26] = {0};
+    int i = 0;
+
+    fgets(str, sizeof(str), stdin);
+
+    while(str[i] != '\0' && str[i] != '\n')
+    {
+        if(str[i] >= 'a' && str[i] <= 'z')
+        {
+            count[str[i] - 'a']++;
+        }
+        i++;
+    }
+
+    i = 0;
+
+    while(str[i] != '\0' && str[i] != '\n')
+    {
+        if(str[i] >= 'a' && str[i] <= 'z' && count[str[i] - 'a'] > 1)
+        {
+            printf("%c", str[i]);
+            break;
+        }
+        i++;
+    }
+
+    return 0;
+}
